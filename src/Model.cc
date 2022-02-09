@@ -72,7 +72,7 @@ static Direction realizeDirection(const KWin::EffectWindow* window)
         // Perhaps the dock is hidden, deduce direction to the icon.
         const QRect iconRect = window->iconGeometry();
 
-        const int screen = KWin::effects->screenNumber(iconRect.center());
+        const KWin::EffectScreen *screen = KWin::effects->screenAt(iconRect.center());
         const int desktop = KWin::effects->currentDesktop();
 
         const QRect screenRect = KWin::effects->clientArea(KWin::ScreenArea, screen, desktop);
