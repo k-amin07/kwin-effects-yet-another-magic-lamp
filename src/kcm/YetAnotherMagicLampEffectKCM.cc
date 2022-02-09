@@ -22,11 +22,8 @@
 #include "YetAnotherMagicLampConfig.h"
 #include "kwineffects_interface.h"
 
-// KF5
-#include <KAboutData>
-
 YetAnotherMagicLampEffectKCM::YetAnotherMagicLampEffectKCM(QWidget* parent, const QVariantList& args)
-    : KCModule(KAboutData::pluginData(QStringLiteral("kwin4_effect_yetanothermagiclamp")), parent, args)
+    : KCModule(parent, args)
     , m_ui(new Ui::YetAnotherMagicLampEffectKCM)
 {
     m_ui->setupUi(this);
