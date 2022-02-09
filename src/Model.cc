@@ -36,7 +36,7 @@ static KWin::EffectWindow* findDock(const KWin::EffectWindow* client)
         if (!window->isDock())
             continue;
 
-        if (!window->geometry().intersects(client->iconGeometry()))
+        if (!window->frameGeometry().intersects(client->iconGeometry()))
             continue;
 
         return window;
@@ -303,7 +303,7 @@ static void transformQuadsLeft(
     // individual vertex, e.g. void Model::transform(WindowVertex& vertex).
 
     const QRect iconRect = window->iconGeometry();
-    const QRect windowRect = window->geometry();
+    const QRect windowRect = window->frameGeometry();
 
     const qreal distance = windowRect.right() - iconRect.right() + params.bumpDistance;
 
@@ -346,7 +346,7 @@ static void transformQuadsTop(
     // individual vertex, e.g. void Model::transform(WindowVertex& vertex).
 
     const QRect iconRect = window->iconGeometry();
-    const QRect windowRect = window->geometry();
+    const QRect windowRect = window->frameGeometry();
 
     const qreal distance = windowRect.bottom() - iconRect.bottom() + params.bumpDistance;
 
@@ -389,7 +389,7 @@ static void transformQuadsRight(
     // individual vertex, e.g. void Model::transform(WindowVertex& vertex).
 
     const QRect iconRect = window->iconGeometry();
-    const QRect windowRect = window->geometry();
+    const QRect windowRect = window->frameGeometry();
 
     const qreal distance = iconRect.left() - windowRect.left() + params.bumpDistance;
 
@@ -432,7 +432,7 @@ static void transformQuadsBottom(
     // individual vertex, e.g. void Model::transform(WindowVertex& vertex).
 
     const QRect iconRect = window->iconGeometry();
-    const QRect windowRect = window->geometry();
+    const QRect windowRect = window->frameGeometry();
 
     const qreal distance = iconRect.top() - windowRect.top() + params.bumpDistance;
 
@@ -629,7 +629,7 @@ QRegion Model::clipRegion() const
 
 int Model::computeBumpDistance() const
 {
-    const QRect windowRect = m_window->geometry();
+    const QRect windowRect = m_window->frameGeometry();
     const QRect iconRect = m_window->iconGeometry();
 
     int bumpDistance = 0;
@@ -661,7 +661,7 @@ int Model::computeBumpDistance() const
 
 qreal Model::computeShapeFactor() const
 {
-    const QRect windowRect = m_window->geometry();
+    const QRect windowRect = m_window->frameGeometry();
     const QRect iconRect = m_window->iconGeometry();
 
     int movingExtent = 0;
