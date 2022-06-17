@@ -72,7 +72,7 @@ static Direction realizeDirection(const KWin::EffectWindow* window)
         // Perhaps the dock is hidden, deduce direction to the icon.
         const QRect iconRect = window->iconGeometry();
 
-        const KWin::EffectScreen *screen = KWin::effects->screenAt(iconRect.center());
+        const KWin::EffectScreen* screen = KWin::effects->screenAt(iconRect.center());
         const int desktop = KWin::effects->currentDesktop();
 
         const QRect screenRect = KWin::effects->clientArea(KWin::ScreenArea, screen, desktop);
@@ -178,9 +178,9 @@ void Model::start(AnimationKind kind)
     }
 }
 
-void Model::step(std::chrono::milliseconds delta)
+void Model::advance(std::chrono::milliseconds presentTime)
 {
-    m_timeLine.update(delta);
+    m_timeLine.advance(presentTime);
     if (!m_timeLine.done()) {
         return;
     }

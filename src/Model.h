@@ -66,9 +66,9 @@ public:
     void start(AnimationKind kind);
 
     /**
-     * Updates the model by @p delta milliseconds.
+     * Updates the model to @p milliseconds.
      **/
-    void step(std::chrono::milliseconds delta);
+    void advance(std::chrono::milliseconds presentTime);
 
     /**
      * Returns whether the animation is complete.
