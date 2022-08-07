@@ -1,0 +1,1 @@
+CURDIR=$(pwd) && git pull && git checkout Plasma/$(plasmashell --version | cut -d ' ' -f 2 | cut -d '.' -f 1,2) && mkdir -p build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr && make && sudo make install && cd $CURDIR
